@@ -46,7 +46,7 @@ public class SimonScreen extends ClickableScreen implements Runnable {
 		ButtonInterfaceAhmed b = null;
 		for(int i=0; i<sequence.size(); i++){
 			if(b != null)
-				dim();
+				b.dim();
 			b = sequence.get(i).getButton();
 			b.highlight();
 			int sleepTime = (numOfRounds/(3/4))*100;
@@ -56,7 +56,7 @@ public class SimonScreen extends ClickableScreen implements Runnable {
 				e.printStackTrace();
 			}
 		}
-		dim();
+		b.dim();
 	}
 
 	private void changeText(String string) {
@@ -70,10 +70,10 @@ public class SimonScreen extends ClickableScreen implements Runnable {
 		info = new TextLabel(130,230,300,40,"Let's play Simon!");
 		sequence = new ArrayList<MoveInterfaceAhmed>();
 		lastSelectedButton = -1;
-//		sequence.add(randomMove());
-//		sequence.add(randomMove());
+		sequence.add(randomMove());
+		sequence.add(randomMove());
 		numOfRounds = 0;
-		//addObject(progress);
+		addObject(progress);
 		addObject(info);
 	}
 
@@ -109,7 +109,7 @@ public class SimonScreen extends ClickableScreen implements Runnable {
 									} catch (InterruptedException e) {
 										e.printStackTrace();
 									}
-									dim();
+									b.dim();
 								}
 								});
 							blink.start();
@@ -130,11 +130,6 @@ public class SimonScreen extends ClickableScreen implements Runnable {
 			addObject(b);
 			System.out.println("added");
 		}
-	}
-	
-	//it's up to you partner
-	private void dim() {
-									
 	}
 	
 	//for partner
